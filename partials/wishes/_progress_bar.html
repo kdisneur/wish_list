@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="progress">
+    <a ng-click="search.purchased = 'false'" href="">
+      <div class="progress-bar progress-bar-danger" style="width: {{ toPurchasePercentage() }}%">
+        <span class="sr-only">{{ toPurchasePercentage() }}% remaining</span>
+      </div>
+    </a>
+    <a ng-click="search.purchased = 'true'" href="">
+      <div class="progress-bar progress-bar-success" style="width: {{ purchasedPercentage() }}%">
+        <span class="sr-only">{{ purchasedPercentage() }}% Complete</span>
+      </div>
+    </a>
+  </div>
+</div>

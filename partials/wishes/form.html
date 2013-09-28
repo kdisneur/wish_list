@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><span class="glyphicon glyphicon-gift"></span>&nbsp; Wish</h1>
+      <hr>
+      <form name="form" role="form" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': form.title.$invalid }">
+          <label class="control-label" for="title">Title <small ng-show="form.title.$invalid">is required</small></label>
+          <input type="text" class="form-control" name="title" id="title" placeholder="Enter a title" ng-model="wish.title" autofocus required>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.amount.$invalid }">
+          <label class="control-label" for="amount">Amount <small ng-show="form.amount.$invalid">is required and should be a number</small></label>
+          <input type="number" class="form-control" name="amount" id="amount" placeholder="Enter an estimated amount" ng-model="wish.amount" required>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="description">Description</label>
+          <textarea id="description" class="form-control" rows="5" ng-model="wish.description"></textarea>
+        </div>
+        <div class="form-group">
+          <a class="btn btn-danger" ng-show="wish.$id()" ng-click="remove()" href="">Remove</a>
+          <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid" ng-click="save()">Save the wish!</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

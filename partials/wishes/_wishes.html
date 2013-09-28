@@ -1,0 +1,13 @@
+<h1><span ng-show="search.purchased == 'true'">Already</span><span ng-show="search.purchased == 'false'">Not yet</span> purchased wishes</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul ui-sortable="sortableOptions" ng-model="wishes" class="list-group">
+      <li id="wish-{{wish.$id()}}" class="list-group-item" ng-repeat="wish in wishes | filter:search | orderBy:'priority'">
+        <a ng-show="wish.purchased" class="btn btn-danger btn-xs pull-right" ng-click="refund(wish)">{{ wish.amount | currency:"€ "}}</a>
+        <a ng-show="! wish.purchased" class="btn btn-success btn-xs pull-right" ng-click="purchase(wish)">{{ wish.amount | currency:"€ "}}</a>
+        <a href="#/wish/{{wish.$id()}}">{{ wish.title }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
