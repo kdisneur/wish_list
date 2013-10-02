@@ -16,7 +16,7 @@ function WishResumeController($scope, $filter, WishList) {
   });
 };
 
-function WishesListController($scope, $routeParams, WishList, wishes) {
+function WishListController($scope, $routeParams, WishList, wishes) {
   $scope.wishes = wishes;
   $scope.search = { purchased: false };
   $scope.sortableOptions = {
@@ -104,7 +104,7 @@ function WishesFormController($scope, $routeParams, $location, wish) {
 var app = angular.module('wish_list', ['mongolabResourceHttp', 'ui.sortable']).
   config(['$routeProvider', function($routeProvider, Wish) {
     $routeProvider.
-      when('/wishes',       { templateUrl: 'partials/wishes/list.html', controller: WishesListController, resolve: { wishes: function(Wish) { return  Wish.all(); }}}).
+      when('/wishes',       { templateUrl: 'partials/wishes/list.html', controller: WishListController,   resolve: { wishes: function(Wish) { return  Wish.all(); }}}).
       when('/wish/new',     { templateUrl: 'partials/wishes/form.html', controller: WishesFormController, resolve: { wish: function(Wish) { return new Wish({ purchased: false }) }}}).
       when('/wish/:wishId', { templateUrl: 'partials/wishes/form.html', controller: WishesFormController, resolve: { wish: function(Wish, $route) { return Wish.getById($route.current.params.wishId) }}}).
       otherwise({ redirectTo: '/wishes' });
